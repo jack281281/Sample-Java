@@ -3,7 +3,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'hello-world'
+      label 'hello-java'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -21,7 +21,7 @@ spec:
     stage('say hello') {
       steps {
         container('busybox') {
-          sh 'echo "hello, world"'
+          sh 'java Hello.java'
         }
       }
     }

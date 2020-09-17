@@ -22,7 +22,6 @@ spec:
       steps {
         container('busybox') {
           sh 'echo "hello, world"'
-	  sh 'which java'
         }
       }
     }

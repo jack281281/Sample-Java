@@ -3,25 +3,25 @@
 pipeline {
   agent {
     kubernetes {
-      label 'hello-world'
+      label 'java-build'
       yaml """
 apiVersion: v1
 kind: Pod
 spec:
   restartPolicy: Never
   containers:
-  - name: busybox
-    image: busybox
+  - name: build
+    image: openjdk:7
     command: ['cat']
     tty: true
 """
     }
   }
   stages {
-    stage('say hello') {
+    stage('build') {
       steps {
-        container('busybox') {
-          sh 'echo "hello, world"'
+        container('build') {
+          sh 'java Hello.java'
         }
       }
     }

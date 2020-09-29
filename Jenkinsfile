@@ -14,6 +14,10 @@ spec:
     image: openjdk:7
     command: ['cat']
     tty: true
+  - name: deploy
+    image: ansible/ansible:ubuntu1404
+    command: ['cat']
+    tty: true
 """
     }
   }
@@ -23,6 +27,21 @@ spec:
         container('build') {
           sh 'javac Hello.java'
           sh 'java Hello'
+        }
+      }
+    }
+    stage('test') {
+      steps {
+        container('build') {
+          sh 'javac Test.java'
+          sh 'java Test'
+        }
+      }
+    }
+    stage('deploy') {
+      steps {
+        container('deploy') {
+          sh 'ansible-playbook -i hosts deploy.yml'
         }
       }
     }

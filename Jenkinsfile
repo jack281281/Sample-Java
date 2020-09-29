@@ -21,7 +21,8 @@ spec:
     stage('build') {
       steps {
         container('build') {
-          sh 'java Hello.java'
+          sh 'javac Hello.java'
+          sh 'java Hello'
         }
       }
     }

@@ -18,6 +18,10 @@ spec:
     image: ansible/ansible:ubuntu1404
     command: ['cat']
     tty: true
+  - name: copy
+    image: bountylabs/awscli
+    command: ['aws']
+    tty: true
 """
     }
   }
@@ -26,8 +30,11 @@ spec:
       steps {
         container('build') {
           sh 'javac Hello.java'
-          sh 'java Hello' >> Output.txt
-	  aws s3 cp Output.txt s3://jenkins-samp-out/Output.txt
+          sh 'java Hello' >> Output.txt 
+		}
+	container('copy') {
+          aws s3 cp Output.txt s3://jenkins-samp-out/Output.txt  
+	    }
         }
       }
     }

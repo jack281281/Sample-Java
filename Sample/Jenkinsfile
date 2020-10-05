@@ -1,0 +1,6 @@
+@Library("ucm-shared-library") _
+
+ucmUiServicek8s{
+    projectType = "java-service"
+    ucm_version_common= "1.0.0"
+}

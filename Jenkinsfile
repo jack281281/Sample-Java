@@ -19,7 +19,7 @@ spec:
     command: ['cat']
     tty: true
   - name: copy
-    image: bountylabs/awscli
+    image: amazon/awscli
     command: ['aws']
     tty: true
 """
@@ -32,11 +32,14 @@ spec:
           sh 'javac Hello.java'
           sh 'java Hello' >> Output.txt 
 		}
-	container('copy') {
-          aws s3 cp Output.txt s3://jenkins-samp-out/Output.txt  
+	    }
+	}
+     stage('S3-copy')) {
+	steps {
+	  container('copy') {
+          	aws s3 cp Output.txt s3://jenkins-samp-out/Output.txt  
 	    }
         }
       }
     }
   }
-} 

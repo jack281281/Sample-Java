@@ -10,7 +10,7 @@ kind: Pod
 spec:
   restartPolicy: Never
   containers:
-  - name: build
+  - name: openjdk
     image: openjdk:8
     command: ['cat']
     tty: true

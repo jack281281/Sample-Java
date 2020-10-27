@@ -34,7 +34,7 @@ spec:
 		}
 	    }
 	}
-     stage('S3-copy')) {
+     stage('S3copy')) {
 	steps {
 	  container('copy') {
 	export AWS_ACCESS_KEY_ID=ASIAVFMNLUW7AMMRKEAF

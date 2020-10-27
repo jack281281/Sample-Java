@@ -1,4 +1,4 @@
-// This is effectively a no-op Jenkinsfile for the master branch. For fuller
+/// This is effectively a no-op Jenkinsfile for the master branch. For fuller
 // examples, see other branches in this repo.
 pipeline {
   agent {

@@ -33,7 +33,7 @@ spec:
           sh 'java Hello' >> Output.txt 
 		}
 	container('copy') {
-          aws s3 cp Output.txt s3://jenkins-samp-out/Output.txt  
+          aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt  
 	    }
         }
       }

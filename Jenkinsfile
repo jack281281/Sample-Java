@@ -16,7 +16,7 @@ spec:
     tty: true
   - name: deploy
     image: ansible/ansible:ubuntu1404
-    command: ['cat']
+    command: ['ansible']
     tty: true
   - name: copy
     image: amazon/awscli

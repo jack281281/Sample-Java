@@ -11,7 +11,7 @@ spec:
   restartPolicy: Never
   containers:
   - name: openjdk
-    image: openjdk:7
+    image: amazoncorretto:8
     command: ['cat']
     tty: true
 """
@@ -25,8 +25,8 @@ spec:
           	sh 'java Hello >> Output.txt'
 	  		sh 'pwd'
 	  		sh 'ls -l'
-	  		sh 'apt-get install python python-pip'
-	  		sh 'pip install awscli'
+			sh 'java -version'
+			sh 'aws s3 list'
 			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }

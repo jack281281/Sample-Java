@@ -18,7 +18,7 @@ spec:
 //    image: ansible/ansible:ubuntu1404
 //    command: ['ansible']
 //    tty: true
-  - name: awscopy
+  - name: awscli
     image: amazon/awscli
     command: ['aws']
     tty: true
@@ -39,7 +39,7 @@ spec:
 	}
     stage('copytos3') {
 	steps {
-	    container('awscopy') { 
+	    container('awscli') { 
 	    	sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'export AWS_ACCESS_KEY_ID=ASIAVFMNLUW7AMMRKEAF'

@@ -14,14 +14,10 @@ spec:
     image: openjdk:7
     command: ['cat']
     tty: true
-  - name: deploy
-    image: ansible/ansible:ubuntu1404
-    command: ['ansible']
-    tty: true
-  - name: copy
-    image: amazon/awscli
-    command: ['aws']
-    tty: true
+//  - name: deploy
+//    image: ansible/ansible:ubuntu1404
+//    command: ['ansible']
+//    tty: true
 """
     }
   }

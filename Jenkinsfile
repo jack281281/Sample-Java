@@ -26,8 +26,8 @@ spec:
 	  		sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'df -h'
-	  		RUN apt-get install python-pip
-			RUN pip install awscli
+	  		sh 'RUN apt-get install python-pip'
+			sh 'RUN pip install awscli'
 			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }

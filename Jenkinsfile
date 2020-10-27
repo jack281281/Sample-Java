@@ -10,8 +10,8 @@ kind: Pod
 spec:
   restartPolicy: Never
   containers:
-  - name: openjdk
-    image: amazoncorretto:8
+  - name: build
+    image: openjdk:8
     command: ['cat']
     tty: true
 """
@@ -25,7 +25,9 @@ spec:
           	sh 'java Hello >> Output.txt'
 	  		sh 'pwd'
 	  		sh 'ls -l'
-			sh 'cat /etc/os-release'
+			sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
+			sh 'python get-pip.py'
+			sh 'pip install awscli'
 			sh 'aws s3 ls'
 			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }

@@ -25,9 +25,9 @@ spec:
           	sh 'java Hello >> Output.txt'
 	  		sh 'pwd'
 	  		sh 'ls -l'
-	  		sh 'df -h'
-	  		sh 'RUN apt-get install python-pip'
-			sh 'RUN pip install awscli'
+	  		sh 'cat /etc/os-release'
+	  		//sh 'RUN apt-get install python-pip'
+			//sh 'RUN pip install awscli'
 			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }

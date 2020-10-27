@@ -25,7 +25,7 @@ spec:
           	sh 'java Hello >> Output.txt'
 	  		sh 'pwd'
 	  		sh 'ls -l'
-			sh 'which aws'
+			sh 'cat /etc/os-release'
 			sh 'aws s3 ls'
 			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }

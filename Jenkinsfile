@@ -14,10 +14,6 @@ spec:
     image: openjdk:7
     command: ['cat']
     tty: true
-  - name: awscli
-    image: amazon/awscli
-    command: ['cat']
-    tty: true
 """
     }
   }
@@ -26,20 +22,19 @@ spec:
       steps {
         container('openjdk') {
           	sh 'javac Hello.java'
+          	sh 'java Hello >> Output.txt'
 	  		sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'df -h'
-//          sh 'java Hello' >> Output.txt
+	  		RUN apt-get install python-pip
+			RUN pip install awscli
+			sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }
 	}
     stage('copytos3') {
 	steps {
-	    container('awscli') { 
-	    	sh 'pwd'
-	  		sh 'ls -l'
-          	sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
-         }
+	    container('openjdk') {
        }
      }
    }

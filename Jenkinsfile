@@ -26,22 +26,21 @@ spec:
 	  		sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'cat Output.txt'
-			//sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-			//sh 'python get-pip.py'
-			//sh 'pip install awscli'
-			//sh 'export AWS_ACCESS_KEY_ID='
-			//sh 'export AWS_SECRET_ACCESS_KEY='
-			//sh 'export AWS_SESSION_TOKEN='
-			//sh 'aws s3 ls'
 			//sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }
 	}
     stage('copytos3') {
 	steps {
-	    container('openjdk') {
+		 withAWS(credentials: 'E3Z2', region: 'us-east-1') {
+	    	container('openjdk') {
 	    	sh 'pwd'
 	  		sh 'ls -l'
+	  		sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
+			sh 'python get-pip.py'
+			sh 'pip install awscli'
+			sh 'aws s3 ls'
+	  	}
        }
      }
    }

@@ -31,6 +31,7 @@ spec:
 	}
     stage('copytos3') {
 	steps {
+		withAWS(credentials: 'E3Z2', region: 'us-east-1') {
 		 container('openjdk') {
 	    	sh 'pwd'
 	  		sh 'ls -l'
@@ -40,6 +41,7 @@ spec:
 			sh 'aws sts get-caller-identity'
 			//sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/'
 	  	}
+	  }
      }
    }
   }

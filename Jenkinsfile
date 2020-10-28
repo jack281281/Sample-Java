@@ -26,7 +26,6 @@ spec:
 	  		sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'cat Output.txt'
-			//sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/Output.txt'
 	  }
 	 }
 	}
@@ -38,7 +37,8 @@ spec:
 	  		sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
 			sh 'python get-pip.py'
 			sh 'pip install awscli'
-			sh 'aws s3 ls'
+			sh 'aws sts get-caller-identity'
+			//sh 'aws s3 cp Output.txt s3://haproxy-test-bucket/'
 	  	}
      }
    }

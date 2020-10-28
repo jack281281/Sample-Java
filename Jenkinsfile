@@ -32,16 +32,15 @@ spec:
 	}
     stage('copytos3') {
 	steps {
-		 withAWS(credentials: 'E3Z2', region: 'us-east-1') {
-	    	container('openjdk') {
+		 container('openjdk') {
 	    	sh 'pwd'
 	  		sh 'ls -l'
 	  		sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
 			sh 'python get-pip.py'
 			sh 'pip install awscli'
-			sh 'aws s3 ls'
+			sh 'aws -help'
+			//sh 'aws s3 ls'
 	  	}
-       }
      }
    }
   }

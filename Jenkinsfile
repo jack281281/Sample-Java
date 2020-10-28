@@ -38,7 +38,7 @@ spec:
 	  		sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
 			sh 'python get-pip.py'
 			sh 'pip install awscli'
-			sh 'aws -help'
+			sh 'aws help'
 			//sh 'aws s3 ls'
 	  	}
      }
